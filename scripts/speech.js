@@ -143,7 +143,3 @@ var commands = {
 	},
 };
 
-annyang.addCommands(commands);
-annyang.setLanguage('fr-FR'); 
-annyang.debug(true); 
-

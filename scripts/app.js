@@ -1,4 +1,4 @@
-/* Connects  to Sphero and init events handlers */
+/* Connects to Sphero and init events handlers */
 async function boltConnect(event){
 	bolt = new SpheroBolt();
 	await bolt.connect();
@@ -33,7 +33,7 @@ async function boltConnect(event){
 	}
 }
 
-/* Init the GUI to controls Sphero */
+/* Init the GUI to control Sphero */
 function loadConnectedPage(){
 	let body = document.querySelector("#pageBody");
 	body.innerHTML = `
@@ -97,6 +97,14 @@ function loadConnectedPage(){
 			console.log(error.message);
 		}
 	});
+	if (annyang){
+		annyang.addCommands(commands);
+		annyang.setLanguage('fr-FR'); 
+		annyang.debug(true); 
+	}
+	else{
+		alert('Votre navigateur n\'est pas compatible avec la reconnaissance vocale, elle est donc désactivée');
+	}
 }
 
 /* Function to launch when user stops touching button , asks Sphero to stop rolling */
@@ -137,7 +145,14 @@ function loadMainPage(){
 			<button id= "connectButton"> Connexion </button>
 		</div>
         `;
-	document.querySelector('#connectButton').addEventListener('click', boltConnect);
+	if (navigator.bluetooth){
+		document.querySelector('#connectButton').addEventListener('click', boltConnect);
+	}
+	else{
+		document.querySelector('#connectInstruction').innerHTML = ` Votre navigateur n'est pas compatible avec la Web Bluetooth API. <br>
+																	Veuillez réessayer dans un autre navigateur`
+		document.querySelector('#connectButton').disabled = true;
+	}
 }
 
 var bolt = null;
