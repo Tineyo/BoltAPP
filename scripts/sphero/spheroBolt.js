@@ -306,7 +306,6 @@ class SpheroBolt{
 			targetId: 0x12,
 			data: [],
 		}
-
 		let command = this.createCommand(commandInfo);
 		this.queueCommand(command);
 	}
@@ -434,7 +433,6 @@ class SpheroBolt{
 			this.printCommandStatus(command);	
 		}
 	}
-
 
 	on(eventName, handler){
 		this.eventListeners[eventName] = handler;

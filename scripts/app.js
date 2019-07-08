@@ -21,15 +21,6 @@ async function boltConnect(event){
 			bolt.setMainLedColor(255, 0, 0);
 			await bolt.setHeading(angle);
 		});
-
-		bolt.on("onSensorUpdate", (command) => {
-			console.log(
-				`Locator:`+
-				`\npositionX = `+command.locator.positionX.toFixed(3)+
-				`\npositionY = `+command.locator.positionY.toFixed(3)+
-				`\nvelocityX = `+command.locator.velocityX.toFixed(3)+
-				`\nvelocityY = `+command.locator.velocityY.toFixed(3)); 
-		});
 	}
 }
 
@@ -80,8 +71,7 @@ function loadConnectedPage(){
 			bolt.setHeading((bolt.heading+45)%360);
 		}
 		else if (e.target.classList.contains('heading-left')){
-			bolt.setHeading((bolt.heading-45)%360);
-			
+			bolt.setHeading((bolt.heading-45)%360);			
 		}
 	});
 

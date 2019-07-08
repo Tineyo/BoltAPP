@@ -8,6 +8,8 @@ var geo_options = {
   		timeout           : 27000,
 		};
 
+var watchId = null;
+
 function getLocation() {
  	if (navigator.geolocation) {
 	  	bolt.calibrateToNorth();
