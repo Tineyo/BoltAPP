@@ -1,0 +1,23 @@
+{
+  "plugins": ["jasmine"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": 0,
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"]
+  },
+  "globals": {
+    "define": false,
+    "Corti": false
+  }
+}
