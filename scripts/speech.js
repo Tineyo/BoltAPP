@@ -17,6 +17,13 @@ var commands = {
 			bolt.rollTime(50, 0, time*1000, []);
 		}
 	},
+
+	'avant vitesse :speed pendant :time': (speed, time) => {
+		speed = Number(speed);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 0, time*1000, []);
+		}
+	},
 	
 	'arrière': () => {
 		bolt.roll(30, 180, []);
@@ -36,6 +43,13 @@ var commands = {
 		}
 	},
 
+	'arrière vitesse :speed pendant :time': (speed, time) => {
+		speed = Number(speed);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 180, time*1000, []);
+		}
+	},
+	
 	'gauche': () => {
 		bolt.roll(30, 270, []);
 	},
@@ -54,6 +68,13 @@ var commands = {
 		}
 	},
 
+	'gauche vitesse :speed pendant :time': (speed, time) => {
+		speed = Number(speed);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 270, time*1000, []);
+		}
+	},
+
 	'droite': () => {
 		bolt.roll(30, 90, []);
 	},
@@ -69,6 +90,13 @@ var commands = {
 		time = Number(time);
 		if (!isNaN(time)){
 			bolt.rollTime(50, 90, time*1000, []);
+		}
+	},
+
+	'droite vitesse :speed pendant :time': (speed, time) => {
+		speed = Number(speed);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 90, time*1000, []);
 		}
 	},
 

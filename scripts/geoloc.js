@@ -9,14 +9,13 @@ var geo_options = {
 		};
 
 var watchId = null;
-
+var oldLong, oldLat, oldTs;
 function getLocation() {
  	if (navigator.geolocation) {
 	  	bolt.calibrateToNorth();
-	  	watchId = null;
-		oldLong = null;
-		oldLat = null;
-		oldTs = null;
+	  	var oldLong = null;
+		var oldLat = null;
+		var oldTs = null;
 	  	watchId = navigator.geolocation.watchPosition(moveSphero,errorLocation,geo_options);
   	}
     else { 

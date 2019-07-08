@@ -15,6 +15,9 @@ async function boltConnect(event){
 			console.log('Waking up robot');
 			bolt.wake();
 		});
+		bolt.on('onCharged', () => {
+			alert('Le robot est complètement chargé');
+		});
 		bolt.on("onCompassNotify",async (angle) => {
 			console.log(angle);
 			bolt.setAllLeds(0, 0, 0);
