@@ -1,3 +1,6 @@
+/*DISABLED*/
+
+
 /* Maximum speed Sphero can roll ( 0 to 255 ) */
 const SPHERO_MAX_SPEED = 100;
 
