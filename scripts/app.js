@@ -50,9 +50,9 @@ function loadConnectedPage(){
 	document.querySelector('#disconnect').addEventListener('click', () => { 
 		bolt.disconnect();
 		annyang.abort();
-		if (watchId){
+		/*if (watchId){
 			navigator.geolocation.clearWatch(watchId);
-		}
+		}*/
 		loadMainPage(); 
 	});
 	/*

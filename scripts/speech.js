@@ -159,9 +159,9 @@ const fct = {
 	disconnect : () => {
 		bolt.disconnect();
 		annyang.abort();
-		if (watchId){
+		/*if (watchId){
 			navigator.geolocation.clearWatch(watchId);
-		}
+		}*/
 		loadMainPage(); 
 	},
 }
