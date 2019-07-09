@@ -17,7 +17,7 @@ Clonez (ou téléchargez) le répertoire puis ouvrez le ficher ```views/index.ht
 ### Fonctionnalités
 
 * Faire rouler le robot
-* Contrôler le robot avec la voix
+* Contrôler le robot avec la voix (Français et anglais)
 * Changer la couleur des LEDs
 
 ## English
@@ -29,10 +29,10 @@ Sphero API is inspired by: https://github.com/igbopie/spherov2.js
 
 ## Usage
 
-Clone (or download) the repository then open the file ```views/index.html``` on your navigator (Google Chrome ideally). 
+Clone (or download) the repository and open the file ```views/index.html``` on your navigator (Google Chrome ideally). 
 
 ## Features
 
 * Rolls the Sphero
-* Control the Sphero with voice (French only)  
+* Control the Sphero with voice (French and English)  
 * Change LEDs color

@@ -19,7 +19,7 @@ function getLocation() {
 	  	watchId = navigator.geolocation.watchPosition(moveSphero,errorLocation,geo_options);
   	}
     else { 
-   		alert("Geolocation is not supported by this browser.");
+   		alert(appDict[language].geolocNotSupported);
   	}
 }
 
@@ -27,7 +27,7 @@ function errorLocation(err){
 	bolt.roll(0, bolt.heading, []);
 	navigator.geolocation.clearWatch(watchId);
 	watchId = null;
-	alert('Erreur, arrêt de la géolocalisation et du robot\n'+err.message);
+	alert(appDict[language].geolocError+err.message);
 }
 
 /* Asks Sphero to roll depending on latitude and longitude of the device */

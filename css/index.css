@@ -74,3 +74,15 @@ span.rangeVal{
 #connectInstruction{
 	font-family: arial;
 }
+
+#fr,#gb{
+	border: solid 2px #2690dd;
+}
+
+#fr:hover,#gb:hover{
+	cursor: pointer;
+}
+
+#fr{
+	margin-right: 15px;
+}

@@ -16,10 +16,9 @@ async function boltConnect(event){
 			bolt.wake();
 		});
 		bolt.on('onCharged', () => {
-			alert('Le robot est complètement chargé');
+			alert(appDict[language].onCharged);
 		});
-		bolt.on("onCompassNotify",async (angle) => {
-			console.log(angle);
+		bolt.on("onCompassNotify", async (angle) => {
 			bolt.setAllLeds(0, 0, 0);
 			bolt.setMainLedColor(255, 0, 0);
 			await bolt.setHeading(angle);
@@ -31,9 +30,9 @@ async function boltConnect(event){
 function loadConnectedPage(){
 	let body = document.querySelector("#pageBody");
 	body.innerHTML = `
-		<button id="disconnect"> Déconnexion </button> <br>		
+		<button id="disconnect">`+ appDict[language].disconnect +`</button> <br>		
 		<div id='control'>
-				<h2> Vitesse </h2>
+				<h2>` + appDict[language].speed + `</h2>
 				<span class="rangeVal">MIN </span><input type="range" min="0" max="255"><span class="rangeVal"> MAX</span><br>
 				<button class="control-button heading-right"><i class="fas fa-share heading-right"></i></button>
 				<button class="control-button roll"><i class="fas fa-arrow-up roll"></i> </button>
@@ -43,7 +42,7 @@ function loadConnectedPage(){
 				<button class="control-button right"> <i class="fas fa-arrow-right right"></i> </button>
 		</div>
 		<div id="color-picker-container"></div><br>
-		<button id="geo"> Suivre </button>
+		<button id="geo">` + appDict[language].geoloc + `</button>
 		<div id="coords"></div>
 		`;
 	document.querySelector('#disconnect').addEventListener('click', () => { 
@@ -91,12 +90,18 @@ function loadConnectedPage(){
 		}
 	});
 	if (annyang){
-		annyang.addCommands(commands);
-		annyang.setLanguage('fr-FR'); 
+		if (language == 'FR'){
+			annyang.addCommands(commandsFR);
+			annyang.setLanguage('fr-FR');
+		} 
+		else{
+			annyang.addCommands(commandsEN);
+			annyang.setLanguage('en-GB');
+		}
 		annyang.debug(true); 
 	}
 	else{
-		alert('Votre navigateur n\'est pas compatible avec la reconnaissance vocale, elle est donc désactivée');
+		alert(appDict[language].speechRecogError);
 	}
 }
 
@@ -134,23 +139,45 @@ function loadMainPage(){
 			<h1> Sphero Bolt App</h1>
 		</header>
 		<div id="connectContainer">
-			<p id="connectInstruction"> Vous devez vous connecter au Sphero Bolt en cliquant sur le bouton Connexion </p>
-			<button id= "connectButton"> Connexion </button>
+			<p id="connectInstruction">` + appDict[language].connectInstruction + `</p>
+			<button id= "connectButton">` + appDict[language].connection + `</button>
 		</div>
         `;
 	if (navigator.bluetooth){
 		document.querySelector('#connectButton').addEventListener('click', boltConnect);
 	}
 	else{
-		document.querySelector('#connectInstruction').innerHTML = ` Votre navigateur n'est pas compatible avec la Web Bluetooth API. <br>
-																	Veuillez réessayer dans un autre navigateur`
+		document.querySelector('#connectInstruction').innerHTML = appDict[language].errorBLE;
 		document.querySelector('#connectButton').disabled = true;
 	}
 }
 
+function loadLanguageChoice(){
+	document.querySelector("#pageBody").innerHTML = `
+		<header>
+			<h1> Sphero Bolt App</h1>
+		</header>
+		<div id="flags">
+			<p> Choose your language </p>
+			<img src="../img/fr.png" id="fr" width="300px" height="150px">
+			<img src="../img/gb.png" id="gb" width="300px" height="150px">
+		</div>
+		`;
+	document.querySelector("#fr").addEventListener('click', () => {
+		language = 'FR';
+		loadMainPage();
+	});
+
+	document.querySelector("#gb").addEventListener('click', () => {
+		language = 'EN';
+		loadMainPage();
+	})
+}
+
 var bolt = null;
 var colorPicker = null;
-loadMainPage();
+var language = null;
+loadLanguageChoice();
 
 
 
