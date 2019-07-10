@@ -65,10 +65,12 @@ function moveSphero(position) {
 			"<br>Heading: "+ heading+
 			"<br>Accuarcy: " + position.coords.accuracy +
 			"<br>Time: " + time +
-			"<br>Distance: " + dist;
+			"<br>Distance: " + dist +
+			"<br>Dlat " + dlat +
+			"<br>Dlon: " + dlon;
 
 	  	if ( speed < 0.4 ) {
-	  		bolt.roll(0, bolt.heading, []);
+	  		bolt.roll(0, heading, []);
 	  	}
 	  	else{
 	  		//Speed convertion from m/s to 0 to SPHERO_MAX_SPEED range
