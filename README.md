@@ -28,7 +28,6 @@ Vous pouvez tester l'application ici: https://tineyo.github.io/BoltAPP/
 * **Direction** : avant, arrière, gauche, droite
 * **Pour indiquer une vitesse**: ajouter `vitesse :valeur:` après avoir dit la direction 
 * **Pour indiquer une durée**: ajouter `pendant :valeur en secondes:` après avoir dit la direction.
-* **Pour indiquer une vitesse et une durée**: Préciser tout d'abord la vitesse puis la durée.
 * **Orienter Sphero Bolt**: Dire `Pivoter droite` ou `Pivoter gauche`. 
 
 #### Changement de couleur
@@ -36,6 +35,8 @@ Vous pouvez tester l'application ici: https://tineyo.github.io/BoltAPP/
 Dite le nom de la couleur.  
 **Couleurs disponibles**: rouge, vert, bleu, jaune, turquoise, violet, noir, blanc  
 
+
+**Liste de toutes les commandes** [ici](https://github.com/Tineyo/BoltAPP/blob/f3b1684d06c0bf7ee568b85856bc98352ce70f6d/scripts/speech.js#L205)
 ## English
 
 ### Presentation
@@ -61,10 +62,12 @@ You can test the app here: https://tineyo.github.io/BoltAPP/
 * **Direction**: Say `go forward`,`go backward`,`go left`,`go right`.
 * **To specify a speed**: say `speed :value:` after the direction.
 * **To specify a duration**: say `during :value:` after the direction.
-* **To specify a speed and a duration**: precise the speed and then precise the duration
 * **To spin Sphero Bolt**: say `spin right` or `spin left`.
 
 #### Change the color
 
 Say the name of the color.  
 **Colors available**: red, green, blue, yellow, turquoise, purple, black, white.
+
+
+**List of all commands** [here](https://github.com/Tineyo/BoltAPP/blob/f3b1684d06c0bf7ee568b85856bc98352ce70f6d/scripts/speech.js#L241)
