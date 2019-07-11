@@ -7,19 +7,19 @@ BoltAPP
 
 ### Présentation
 
-BoltAPP est une application  s'ouvrant dans le navigateur permettant de piloter facilement le robot Sphero Bolt avec la Web Bluetooth API.
+BoltAPP est une application permettant de piloter facilement le robot Sphero Bolt dans le navigateur avec la Web Bluetooth API.
 L'API pour contrôler le robot est grandement inspirée par: https://github.com/igbopie/spherov2.js 
 
 ### Utilisation
 
-Clonez (ou téléchargez) le répertoire puis ouvrez le ficher `views/index.html` dans votre navigateur.   
+Vous pouvez tester l'application ici: https://tineyo.github.io/BoltAPP/
 
 ### Fonctionnalités
 
 * Faire rouler le robot.
 * Contrôler le robot avec la voix (Français et anglais).
 * Changer la couleur des LEDs.
-* Système demandant au robot de nous suivre en utilisant la géolocalisation de l'appareil (en dévelopemment).
+* Système demandant au robot de nous suivre en utilisant la géolocalisation de l'appareil (experimental).
 
 ### Contrôle vocal
 
@@ -45,14 +45,14 @@ Sphero API is inspired by: https://github.com/igbopie/spherov2.js
 
 ### Usage
 
-Clone (or download) the repository and open the file `views/index.html` on your navigator. 
+You can test the app here: https://tineyo.github.io/BoltAPP/ 
 
 ### Features
 
 * Rolls the Sphero
 * Control the Sphero with voice (French and English)  
 * Change LEDs color
-* System asking Sphero to follow us using device's geolocation (under development)
+* System asking Sphero to follow you using device's geolocation (experimental)
 
 ### Voice Control
 

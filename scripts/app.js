@@ -42,20 +42,18 @@ function loadConnectedPage(){
 				<button class="control-button right"> <i class="fas fa-arrow-right right"></i> </button>
 		</div>
 		<div id="color-picker-container"></div><br>
-		`;
-		/*<button id="geo">` + appDict[language].geoloc + `</button>
-		<div id="coords"></div>
-		*/
+		<button id="geo">` + appDict[language].geoloc + `</button>
+		`;		
 
 	document.querySelector('#disconnect').addEventListener('click', () => { 
 		bolt.disconnect();
 		annyang.abort();
-		/*if (watchId){
+		if (watchId){
 			navigator.geolocation.clearWatch(watchId);
-		}*/
+		}
 		loadMainPage(); 
 	});
-	/*
+	
 	document.querySelector('#geo').addEventListener('click', function(event){
 		if (watchId){
 			bolt.roll(0, bolt.heading, []);
@@ -66,7 +64,7 @@ function loadConnectedPage(){
 		else {
 			getLocation();
 		}
-	}) */
+	}) 
 	document.querySelector('#control').addEventListener('touchstart', startRoll);
 	document.querySelector('#control').addEventListener('mousedown', startRoll);
 	document.querySelector('#control').addEventListener('touchend', stopRoll);
