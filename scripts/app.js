@@ -160,8 +160,8 @@ function loadLanguageChoice(){
 		</header>
 		<div id="flags">
 			<p> Choose your language </p>
-			<img src="../img/fr.png" id="fr" width="300px" height="150px">
-			<img src="../img/gb.png" id="gb" width="300px" height="150px">
+			<img src="./img/fr.png" id="fr" width="300px" height="150px">
+			<img src="./img/gb.png" id="gb" width="300px" height="150px">
 		</div>
 		`;
 	document.querySelector("#fr").addEventListener('click', () => {
