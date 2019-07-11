@@ -10,7 +10,7 @@ button{
 	width: 200px;
     height: 50px;
     margin: auto;
-    font-size: 35px;
+    font-size: 30px;
     font-family: Arial;
     color: #2690dd;
     margin: 10px;
@@ -21,19 +21,13 @@ button.control-button{
 	height: 100px;
 	font-size: 70px;
 }
-
-#disconnect{
-	display: block;
-	width: 250px;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
+#control-color-container{
+	margin-top: 10px;
 }
-
 button:hover{
 	background-color: #2690dd;
 	color: white;
+	cursor: pointer;
 }
 
 #pageBody{
@@ -58,7 +52,9 @@ h2{
 	display: inline-block;
 	position: relative;
 }
-
+#color-picker-container:hover{
+	cursor: pointer;
+}
 #control{
 	display: inline-block;
 	position: relative;

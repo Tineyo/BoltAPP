@@ -2,15 +2,8 @@
 async function boltConnect(event){
 	bolt = new SpheroBolt();
 	await bolt.connect();
-	if (bolt.device){
+	if (bolt.connected){
 		loadConnectedPage();
-		if (!annyang.started){
-			annyang.started=true;
-			annyang.start({continuous: true});
-		}
-		else{
-			annyang.resume();
-		}
 		bolt.on("onWillSleepAsync", () => {
 			console.log('Waking up robot');
 			bolt.wake();
@@ -30,21 +23,23 @@ async function boltConnect(event){
 function loadConnectedPage(){
 	let body = document.querySelector("#pageBody");
 	body.innerHTML = `
-		<button id="disconnect">`+ appDict[language].disconnect +`</button> <br>		
-		<div id='control'>
-				<h2>` + appDict[language].speed + `</h2>
-				<span class="rangeVal">MIN </span><input type="range" min="0" max="255"><span class="rangeVal"> MAX</span><br>
-				<button class="control-button heading-right"><i class="fas fa-share heading-right"></i></button>
-				<button class="control-button roll"><i class="fas fa-arrow-up roll"></i> </button>
-				<button class="control-button heading-left"><i class="fas fa-reply heading-left"></i></button><br>		
-				<button class="control-button left"> <i class="fas fa-arrow-left left"></i> </button>
-				<button class="control-button back"> <i class="fas fa-arrow-down back"></i> </button>
-				<button class="control-button right"> <i class="fas fa-arrow-right right"></i> </button>
+		<button id="disconnect">`+ appDict[language].disconnect +`</button> 
+		<button id="speech"><i class="fas fa-microphone"></i></button>
+		<button id="geo">` + appDict[language].geoloc + `</button><br>		
+		<div id="control-color-container">
+			<div id='control'>
+					<h2>` + appDict[language].speed + `</h2>
+					<span class="rangeVal">MIN </span><input type="range" min="0" max="255"><span class="rangeVal"> MAX</span><br>
+					<button class="control-button heading-right"><i class="fas fa-share heading-right"></i></button>
+					<button class="control-button roll"><i class="fas fa-arrow-up roll"></i> </button>
+					<button class="control-button heading-left"><i class="fas fa-reply heading-left"></i></button><br>		
+					<button class="control-button left"> <i class="fas fa-arrow-left left"></i> </button>
+					<button class="control-button back"> <i class="fas fa-arrow-down back"></i> </button>
+					<button class="control-button right"> <i class="fas fa-arrow-right right"></i> </button>
+			</div>
+			<div id="color-picker-container"></div><br>
 		</div>
-		<div id="color-picker-container"></div><br>
-		<button id="geo">` + appDict[language].geoloc + `</button>
 		`;		
-
 	document.querySelector('#disconnect').addEventListener('click', () => { 
 		bolt.disconnect();
 		annyang.abort();
@@ -53,16 +48,32 @@ function loadConnectedPage(){
 		}
 		loadMainPage(); 
 	});
+
+	document.querySelector('#speech').addEventListener('click', () => {
+		if (!annyang.started){
+			annyang.started=true;
+			annyang.start({continuous: true});
+		}
+		else if (annyang.isListening()){
+			annyang.abort();
+		}
+		else{
+			annyang.resume();
+		}
+
+	})
 	
 	document.querySelector('#geo').addEventListener('click', function(event){
+		let b = document.querySelector('#geo');
 		if (watchId){
 			bolt.roll(0, bolt.heading, []);
 			navigator.geolocation.clearWatch(watchId);
 			watchId = null;
-			document.querySelector('#coords').innerHTML = '';
+			geo.innerHTML = appDict[language].geoloc
 		}
 		else {
 			getLocation();
+			b.innerHTML = appDict[language].geolocOff;
 		}
 	}) 
 	document.querySelector('#control').addEventListener('touchstart', startRoll);
@@ -175,6 +186,15 @@ function loadLanguageChoice(){
 	})
 }
 
+annyang.addCallback('start', () => {
+		let b = document.querySelector('#speech');
+		b.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+	});
+
+annyang.addCallback('end', () => {
+		let b = document.querySelector('#speech');
+		b.innerHTML = '<i class="fas fa-microphone"></i>';
+	});
 var bolt = null;
 var colorPicker = null;
 var language = null;

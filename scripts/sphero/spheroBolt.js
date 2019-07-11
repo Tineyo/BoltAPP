@@ -1,6 +1,7 @@
 class SpheroBolt{
 	constructor() {
 		this.seqNumber = 0;
+		this.connected = false;
 		this.characs = new Map();
 		this.eventListeners = {};
 		this.device = null
@@ -51,8 +52,9 @@ class SpheroBolt{
 	
 	/* Disconnect from Sphero */
 	async disconnect(){
-		if (this.device){
+		if (this.connected){
 			await this.device.gatt.disconnect();
+			this.connected = false
 			this.device = null;
 		}
 		else{
@@ -63,6 +65,7 @@ class SpheroBolt{
 	/* Init Sphero after connection*/
 	async init(){
 		await this.characs.get(ANTIDOS_CHARACTERISTIC).writeValue(useTheForce);
+		this.connected = true;
 		this.wake();	
 		this.resetYaw();
 		this.resetLocator();	

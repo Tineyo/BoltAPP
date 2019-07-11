@@ -20,6 +20,15 @@ const fct = {
 
 	rollSpeedTime : (speed, time) => {
 		speed = Number(speed);
+		time = Number(time);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 0, time*1000, []);
+		}
+	},
+
+	rollTimeSpeed : (time, speed) => {
+		speed = Number(speed);
+		time = Number(time);
 		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
 			bolt.rollTime(speed, 0, time*1000, []);
 		}
@@ -45,6 +54,15 @@ const fct = {
 
 	rollBackwardSpeedTime : (speed, time) => {
 		speed = Number(speed);
+		time = Number(time);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 180, time*1000, []);
+		}
+	},
+
+	rollBackwardTimeSpeed : (time, speed) => {
+		speed = Number(speed);
+		time = Number(time);
 		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
 			bolt.rollTime(speed, 180, time*1000, []);
 		}
@@ -70,6 +88,15 @@ const fct = {
 
 	rollLeftSpeedTime :  (speed, time) => {
 		speed = Number(speed);
+		time = Number(time);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 270, time*1000, []);
+		}
+	},
+
+	rollLeftTimeSpeed :  (time, speed) => {
+		speed = Number(speed);
+		time = Number(time);
 		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
 			bolt.rollTime(speed, 270, time*1000, []);
 		}
@@ -95,6 +122,15 @@ const fct = {
 
 	rollRightSpeedTime :  (speed, time) => {
 		speed = Number(speed);
+		tume = Number(time);
+		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
+			bolt.rollTime(speed, 90, time*1000, []);
+		}
+	},
+
+	rollRightTimeSpeed :  (time,speed) => {
+		speed = Number(speed);
+		tume = Number(time);
 		if (!isNaN(speed) && speed <= 255 && !isNaN(time)){
 			bolt.rollTime(speed, 90, time*1000, []);
 		}
@@ -159,9 +195,9 @@ const fct = {
 	disconnect : () => {
 		bolt.disconnect();
 		annyang.abort();
-		/*if (watchId){
+		if (watchId){
 			navigator.geolocation.clearWatch(watchId);
-		}*/
+		}
 		loadMainPage(); 
 	},
 }
@@ -171,18 +207,22 @@ const commandsFR = {
 	'avant vitesse :speed': fct.rollSpeed,
 	'avant pendant :time': fct.rollTime,
 	'avant vitesse :speed pendant :time': fct.rollSpeedTime,
+	'avant pendant :time vitesse :speed': fct.rollTimeSpeed,
 	'arrière': fct.rollBackward,
 	'arrière vitesse :speed': fct.rollBackwardSpeed,
 	'arrière pendant :time': fct.rollSpeedTime,
-	'arrière vitesse :speed pendant :time': fct.rollBackwardSpeedTime,	
+	'arrière vitesse :speed pendant :time': fct.rollBackwardSpeedTime,
+	'arrière pendant :time vitesse :speed': fct.rollBackwardTimeSpeed,	
 	'gauche': fct.rollLeft,
 	'gauche vitesse :speed': fct.rollLeftSpeed,
 	'gauche pendant :time': fct.rollLeftTime,
 	'gauche vitesse :speed pendant :time': fct.rollLeftSpeedTime,
+	'gauche pendant :time vitesse :speed': fct.rollLeftTimeSpeed,
 	'droite': fct.rollRight,
 	'droite vitesse :speed': fct.rollRightSpeed,
 	'droite pendant :time': fct.rollRightTime,
 	'droite vitesse :speed pendant :time': fct.rollRightSpeedTime,
+	'droite pendant :time vitesse :speed': fct.rollRightTimeSpeed,
 	'pivoter droite':  fct.spinRight,
 	'pivoter gauche':  fct.spinLeft,
 	'orienter vers le nord': fct.orientToNorth,
@@ -203,18 +243,22 @@ const commandsEN = {
 	'go forward speed :speed': fct.rollSpeed,
 	'go forward during :time': fct.rollTime,
 	'go forward speed :speed during :time': fct.rollSpeedTime,
+	'go forward during :time speed :speed': fct.rollTimeSpeed,
 	'go backward': fct.rollBackward,
 	'go backward speed :speed': fct.rollBackwardSpeed,
 	'go backward during :time': fct.rollSpeedTime,
 	'go backward speed :speed during :time': fct.rollBackwardSpeedTime,	
+	'go backward during :time speed :speed': fct.rollBackwardTimeSpeed,
 	'go left': fct.rollLeft,
 	'go left speed :speed': fct.rollLeftSpeed,
 	'go left during :time': fct.rollLeftTime,
 	'go left speed :speed during :time': fct.rollLeftSpeedTime,
+	'go left during :time speed :speed': fct.rollLeftTimeSpeed,
 	'go right': fct.rollRight,
 	'go right speed :speed': fct.rollRightSpeed,
 	'go right during :time': fct.rollRightTime,
 	'go right speed :speed during :time': fct.rollRightSpeedTime,
+	'go right during :time speed :speed': fct.rollRightTimeSpeed,
 	'spin right':  fct.spinRight,
 	'spin left':  fct.spinLeft,
 	'orient to north': fct.orientToNorth,

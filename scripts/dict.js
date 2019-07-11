@@ -10,6 +10,7 @@ const dictFR = {
 				Veuillez réessayer dans un autre navigateur`,
 	geolocNotSupported : 'La géolocalisation n\'est pas supportée par votre navigateur',
 	geolocError : 'Erreur, arrêt de la géolocalisation et du robot\n',
+	geolocOff: 'Arrêt',
 }
 
 const dictEN = {
@@ -24,6 +25,7 @@ const dictEN = {
 				Try in a other navigator`,
 	geolocNotSupported : 'Geolocation is not supported by this browser.',
 	geolocError : 'Error, geolocation and Sphero stopped\n',
+	geolocOff: 'Stop',
 }
 
 var appDict = [];

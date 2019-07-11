@@ -24,6 +24,7 @@ function getLocation() {
 }
 
 function errorLocation(err){
+	document.querySelector('#geo').innerHTML = appDict[language].geoloc;
 	bolt.roll(0, bolt.heading, []);
 	navigator.geolocation.clearWatch(watchId);
 	watchId = null;
