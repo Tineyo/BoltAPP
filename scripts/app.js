@@ -186,6 +186,7 @@ function loadLanguageChoice(){
 	})
 }
 
+if(annyang){
 annyang.addCallback('start', () => {
 		let b = document.querySelector('#speech');
 		b.innerHTML = '<i class="fas fa-microphone-slash"></i>';
@@ -195,6 +196,7 @@ annyang.addCallback('end', () => {
 		let b = document.querySelector('#speech');
 		b.innerHTML = '<i class="fas fa-microphone"></i>';
 	});
+}
 var bolt = null;
 var colorPicker = null;
 var language = null;
