@@ -1,3 +1,5 @@
+I don't think Github has messaging anymore, but I scoured the internet for a library to connect to my Sphero Bolt for a research project and this App is all there is. It's perfect. Thank you for being you.
+
 BoltAPP
 ==========
 * [Français](#français)  
